@@ -2,11 +2,19 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
+import localFont from "next/font/local";
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
   variable: "--font-noto-sans-jp",
   weight: ["700", "500", "400"],
+  display: "swap",
+});
+
+const pretendard = localFont({
+  src: "./fonts/PretendardVariable.woff2",
+  variable: "--font-pretendard",
+  weight: "500 700",
   display: "swap",
 });
 
@@ -22,7 +30,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${notoSansJP.variable}`}>{children}</body>
+      <body className={`${notoSansJP.variable} ${pretendard.variable}`}>
+        {children}
+      </body>
     </html>
   );
 }
