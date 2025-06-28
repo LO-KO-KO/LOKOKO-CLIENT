@@ -1,15 +1,13 @@
 import "./globals.css";
 
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Noto_Sans_JP } from "next/font/google";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
+const notoSansJP = Noto_Sans_JP({
+  subsets: ["latin"],
+  variable: "--font-noto-sans-jp",
+  weight: ["700", "500", "400"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -24,9 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
-      </body>
+      <body className={`${notoSansJP.variable}`}>{children}</body>
     </html>
   );
 }
