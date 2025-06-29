@@ -30,10 +30,6 @@
   --color-green: #15c37e;
   --color-blue: #3182f7;
 
-  /* font */
-  --font-noto-sans-jp: var(--font-noto-sans-jp), "Noto Sans JP", sans-serif;
-  --font-pretendard: var(--font-pretendard), Pretendard, sans-serif;
-
   /* font-weight */
   --font-bold: 700;
   --font-medium: 500;
