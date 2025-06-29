@@ -131,7 +131,7 @@
   }
 
   /* JP Caption */
-  .text-jp-caption1-b {
+  .text-jp-caption1 {
     font-family: var(--font-noto-sans-jp);
     font-size: var(--text-jp-caption1);
     line-height: 160%;
