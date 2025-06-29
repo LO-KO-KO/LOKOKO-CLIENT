@@ -1,0 +1,32 @@
+name: Synchronize to forked repo
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    name: Sync forked repo
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with: 
+          token: ${{ secrets.AUTO_ACTIONS }}
+          fetch-depth: 0
+          ref: main
+
+      - name: Add remote-url
+        run: |
+          git remote add forked-repo https://heeyyeon:${{ secrets.AUTO_ACTIONS }}@github.com/heeyyeon/LOCOCO-CLIENT
+          git config user.name heeyyeon
+          git config user.email ${{ secrets.EMAIL }}
+      
+      - name: Push changes to forked-repo 
+        run: |
+          git push -f forked-repo main
+       
+      - name: Clean up
+        run: |
+          git remote remove forked-repo
