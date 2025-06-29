@@ -29,6 +29,48 @@
   --color-yellow: #fec341;
   --color-green: #15c37e;
   --color-blue: #3182f7;
+
+  /* font */
+  --font-noto-sans-jp: var(--font-noto-sans-jp), "Noto Sans JP", sans-serif;
+  --font-pretendard: var(--font-pretendard), Pretendard, sans-serif;
+
+  /* font-weight */
+  --font-bold: 700;
+  --font-medium: 500;
+  --font-regular: 400;
+
+  /* JP head */
+  --text-jp-head1: 2rem;
+  --text-jp-head2: 1.75rem;
+  --text-jp-head3: 1.5rem;
+
+  /* JP title */
+  --text-jp-title1: 1.25rem;
+  --text-jp-title2: 1.125rem;
+  --text-jp-title3: 1rem;
+
+  /* JP body */
+  --text-jp-body1: 0.875rem;
+  --text-jp-body2: 0.875rem;
+
+  /* JP caption */
+  --text-jp-caption1: 0.75rem;
+  --text-jp-caption2: 0.75rem;
+  --text-jp-caption3: 0.75rem;
+
+  /* EN head */
+  --text-en-head1: 1.5rem;
+
+  /* EN title */
+  --text-en-title1: 1.25rem;
+  --text-en-title2: 1.125rem;
+  --text-en-title3: 1rem;
+
+  /* EN body */
+  --text-en-body1: 0.875rem;
+
+  /* EN caption */
+  --text-en-caption1: 0.75rem;
 }
 
 @layer base {
@@ -43,4 +85,103 @@
 
 @layer utilities {
   /* 커스텀 유틸리티 클래스 */
+  .text-jp-head1 {
+    font-family: var(--font-noto-sans-jp);
+    font-size: var(--text-jp-head1);
+    line-height: 140%;
+  }
+  .text-jp-head2 {
+    font-family: var(--font-noto-sans-jp);
+    font-size: var(--text-jp-head2);
+    line-height: 140%;
+  }
+  .text-jp-head3 {
+    font-family: var(--font-noto-sans-jp);
+    font-size: var(--text-jp-head3);
+    line-height: 150%;
+  }
+
+  /* JP Title */
+  .text-jp-title1 {
+    font-family: var(--font-noto-sans-jp);
+    font-size: var(--text-jp-title1);
+    line-height: 150%;
+  }
+  .text-jp-title2 {
+    font-family: var(--font-noto-sans-jp);
+    font-size: var(--text-jp-title2);
+    line-height: 150%;
+  }
+  .text-jp-title3 {
+    font-family: var(--font-noto-sans-jp);
+    font-size: var(--text-jp-title3);
+    line-height: 150%;
+  }
+
+  /* JP Body */
+  .text-jp-body1 {
+    font-family: var(--font-noto-sans-jp);
+    font-size: var(--text-jp-body1);
+    line-height: 160%;
+  }
+  .text-jp-body2 {
+    font-family: var(--font-noto-sans-jp);
+    font-size: var(--text-jp-body2);
+    line-height: 160%;
+  }
+
+  /* JP Caption */
+  .text-jp-caption1-b {
+    font-family: var(--font-noto-sans-jp);
+    font-size: var(--text-jp-caption1);
+    line-height: 160%;
+  }
+  .text-jp-caption2 {
+    font-family: var(--font-noto-sans-jp);
+    font-size: var(--text-jp-caption2);
+    line-height: 160%;
+  }
+  .text-jp-caption3 {
+    font-family: var(--font-noto-sans-jp);
+    font-size: var(--text-jp-caption3);
+    line-height: 160%;
+  }
+
+  /* EN Heading */
+  .text-en-head1 {
+    font-family: var(--font-pretendard);
+    font-size: var(--text-en-head1);
+    line-height: 150%;
+  }
+
+  /* EN Title */
+  .text-en-title1 {
+    font-family: var(--font-pretendard);
+    font-size: var(--text-en-title1);
+    line-height: 150%;
+  }
+  .text-en-title2 {
+    font-family: var(--font-pretendard);
+    font-size: var(--text-en-title2);
+    line-height: 150%;
+  }
+  .text-en-title3 {
+    font-family: var(--font-pretendard);
+    font-size: var(--text-en-title3);
+    line-height: 150%;
+  }
+
+  /* EN Body */
+  .text-en-body1 {
+    font-family: var(--font-pretendard);
+    font-size: var(--text-en-body1);
+    line-height: 150%;
+  }
+
+  /* EN Caption */
+  .text-en-caption1 {
+    font-family: var(--font-pretendard);
+    font-size: var(--text-en-caption1);
+    line-height: 150%;
+  }
 }
