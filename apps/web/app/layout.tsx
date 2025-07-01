@@ -1,7 +1,8 @@
+import './globals.css';
+
 import type { Metadata } from 'next';
 import { Noto_Sans_JP } from 'next/font/google';
 import localFont from 'next/font/local';
-import './globals.css';
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
@@ -9,6 +10,7 @@ const notoSansJP = Noto_Sans_JP({
   weight: ['700', '500', '400'],
   display: 'swap',
 });
+//test commit
 
 const pretendard = localFont({
   src: './fonts/PretendardVariable.woff2',
