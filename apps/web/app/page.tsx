@@ -1,6 +1,10 @@
+'use client';
+
 import {
   Badge,
   Button,
+  CardProduct,
+  CardReview,
   SvgArrowUp,
   SvgErrorFill,
   SvgHome,
@@ -43,6 +47,25 @@ export default function Home() {
       <SvgErrorFill />
       <SvgLikeFill className="fill-pink-400" />
       <Badge rank={1} className="bg-pink-200" />
+      <CardProduct
+        brand="브랜드명"
+        title="상품명"
+        description="50ml, 100ml"
+        productId={1}
+        isLiked={true}
+        likeCount={123}
+        rank={1}
+        rating={4}
+        reviewCount={999}
+      />
+      <CardReview
+        type="video"
+        brand="브랜드명"
+        title="상품명"
+        reviewId={4}
+        likeCount={123}
+        rank={5}
+      />
     </div>
   );
 }
