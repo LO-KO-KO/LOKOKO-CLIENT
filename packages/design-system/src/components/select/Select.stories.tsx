@@ -1,13 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 import {
   Select,
   SelectTrigger,
   SelectValue,
   SelectContent,
-  SelectGroup,
-  SelectLabel,
   SelectItem,
-  SelectSeparator,
 } from './Select';
 
 const meta: Meta<typeof Select> = {
@@ -17,24 +15,67 @@ const meta: Meta<typeof Select> = {
 };
 export default meta;
 
-export const Default: StoryObj<typeof Select> = {
-  render: (args) => (
-    <Select {...args}>
-      <SelectTrigger>
+const SELECT_OPTIONS = ['apple', 'banana', 'blueberry', 'grapes', 'pineapple'];
+
+const OptionSelectOverflow = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <Select open={open} onOpenChange={() => setOpen(!open)}>
+      <SelectTrigger open={open}>
         <SelectValue placeholder="Select a fruit" />
       </SelectTrigger>
       <SelectContent>
-        <SelectGroup>
-          <SelectLabel>Fruits</SelectLabel>
-          <SelectItem value="apple">Apple</SelectItem>
-          <SelectItem value="banana">Banana</SelectItem>
-          <SelectItem value="blueberry">Blueberry</SelectItem>
-          <SelectSeparator />
-          <SelectItem value="grapes">Grapes</SelectItem>
-          <SelectItem value="pineapple">Pineapple</SelectItem>
-        </SelectGroup>
+        {SELECT_OPTIONS.map((option) => (
+          <SelectItem hover value={option} key={option}>
+            {option}
+          </SelectItem>
+        ))}
       </SelectContent>
     </Select>
-  ),
-  args: {},
+  );
+};
+
+const OptionSelect = () => {
+  return (
+    <Select>
+      <SelectTrigger open>
+        <SelectValue placeholder="Select a fruit" />
+      </SelectTrigger>
+      <SelectContent>
+        {SELECT_OPTIONS.slice(0, 3).map((option) => (
+          <SelectItem hover value={option} key={option}>
+            {option}
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
+  );
+};
+
+const ReviewSelect = () => {
+  return (
+    <Select>
+      <SelectTrigger open>
+        <SelectValue placeholder="Select a fruit" />
+      </SelectTrigger>
+      <SelectContent>
+        {SELECT_OPTIONS.map((option) => (
+          <SelectItem value={option} key={option}>
+            {option}
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
+  );
+};
+
+export const OptionOverflow: StoryObj<typeof Select> = {
+  render: () => <OptionSelectOverflow />,
+};
+export const Option: StoryObj<typeof Select> = {
+  render: () => <OptionSelect />,
+};
+export const Review: StoryObj<typeof Select> = {
+  render: () => <ReviewSelect />,
 };
