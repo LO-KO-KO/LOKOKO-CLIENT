@@ -6,6 +6,7 @@ import {
   SvgHome,
   SvgLikeFill,
 } from '@lococo/design-system';
+import Footer from '../components/footer/Footer';
 
 export default function Home() {
   return (
@@ -43,6 +44,7 @@ export default function Home() {
       <SvgErrorFill />
       <SvgLikeFill className="fill-pink-400" />
       <Badge rank={1} className="bg-pink-200" />
+      <Footer />
     </div>
   );
 }
