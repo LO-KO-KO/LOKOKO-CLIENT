@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Badge,
   Button,
   SvgArrowUp,
@@ -43,6 +44,7 @@ export default function Home() {
       <SvgErrorFill />
       <SvgLikeFill className="fill-pink-400" />
       <Badge rank={1} className="bg-pink-200" />
+      <Avatar />
     </div>
   );
 }
