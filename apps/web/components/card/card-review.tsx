@@ -5,6 +5,7 @@ import { ReviewItem } from 'types/review';
 import { PropsWithChildren } from 'react';
 import Image from 'next/image';
 import { Badge, SvgGoodFill } from '@lococo/design-system';
+import { cn } from '../../../../packages/design-system/src/lib/utils';
 
 const imageWrapperVariant = cva(
   'relative border-[0.1rem] border-gray-200 flex items-center justify-center',
@@ -51,7 +52,7 @@ export default function CardReview({
       className="flex w-[26.4rem] cursor-pointer flex-col"
       onClick={() => handleCardClick?.(reviewId)}
     >
-      <div className={imageWrapperVariant({ type })}>
+      <div className={cn(imageWrapperVariant({ type }), `bg-gray-500`)}>
         {imageUrl ? (
           type === 'video' ? (
             <video
