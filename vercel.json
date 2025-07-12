@@ -2,7 +2,6 @@
   "installCommand": "pnpm install",
   "buildCommand": "pnpm turbo run build --filter=web",
   "outputDirectory": "apps/web/.next",
-  "appDirectory": "apps/web",
   "rewrites": [
     {
       "source": "/(.*)",

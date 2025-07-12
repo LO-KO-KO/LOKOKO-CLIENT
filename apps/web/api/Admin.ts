@@ -10,25 +10,32 @@
  * ---------------------------------------------------------------
  */
 
-import { ApiResponseListVideoResponse } from "./data-contracts";
+import { ApiResponseVoid } from "./data-contracts";
 import { HttpClient, RequestParams } from "./http-client";
 
-export class Youtube<
+export class Admin<
   SecurityDataType = unknown,
 > extends HttpClient<SecurityDataType> {
   /**
    * No description
    *
-   * @tags YOUTUBE
-   * @name GetPopularTrends
-   * @summary 인기 뷰티 트렌드 영상 조회 (메인 페이지)
-   * @request GET:/api/youtube/trends
+   * @tags ADMIN
+   * @name DeleteReviewByAdmin
+   * @request DELETE:/api/admin/reviews/{reviewId}
    * @secure
    */
-  getPopularTrends = (params: RequestParams = {}) =>
-    this.request<ApiResponseListVideoResponse, any>({
-      path: `/api/youtube/trends`,
-      method: "GET",
+  deleteReviewByAdmin = (
+    reviewId: number,
+    query: {
+      /** @format int64 */
+      userId: number;
+    },
+    params: RequestParams = {},
+  ) =>
+    this.request<ApiResponseVoid, any>({
+      path: `/api/admin/reviews/${reviewId}`,
+      method: "DELETE",
+      query: query,
       secure: true,
       ...params,
     });

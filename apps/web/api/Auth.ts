@@ -12,6 +12,7 @@
 
 import {
   ApiResponseLineLoginResponse,
+  ApiResponseLoginUrlResponse,
   ApiResponseVoid,
 } from "./data-contracts";
 import { HttpClient, RequestParams } from "./http-client";
@@ -39,6 +40,22 @@ export class Auth<
    * No description
    *
    * @tags AUTH
+   * @name GetLoginUrl
+   * @summary 라인 로그인 URL 생성 (클라에서 호출)
+   * @request GET:/api/auth/url
+   * @secure
+   */
+  getLoginUrl = (params: RequestParams = {}) =>
+    this.request<ApiResponseLoginUrlResponse, any>({
+      path: `/api/auth/url`,
+      method: "GET",
+      secure: true,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags AUTH
    * @name RedirectToLineAuth
    * @summary 라인 소셜 로그인, 리다이렉션
    * @request GET:/api/auth/line/redirect
@@ -56,7 +73,7 @@ export class Auth<
    *
    * @tags AUTH
    * @name LineLogin
-   * @summary 라인 소셜 로그인, JWT 토큰 발급
+   * @summary 라인 소셜 로그인, JWT 토큰 발급 후 저장
    * @request GET:/api/auth/line/login
    * @secure
    */

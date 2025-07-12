@@ -10,25 +10,25 @@
  * ---------------------------------------------------------------
  */
 
-import { ApiResponseListVideoResponse } from "./data-contracts";
+import { ApiResponseVoid } from "./data-contracts";
 import { HttpClient, RequestParams } from "./http-client";
 
-export class Youtube<
+export class ProductLike<
   SecurityDataType = unknown,
 > extends HttpClient<SecurityDataType> {
   /**
    * No description
    *
-   * @tags YOUTUBE
-   * @name GetPopularTrends
-   * @summary 인기 뷰티 트렌드 영상 조회 (메인 페이지)
-   * @request GET:/api/youtube/trends
+   * @tags PRODUCT LIKE
+   * @name ToggleLike
+   * @summary 상품 좋아요 토글 (추가/취소)
+   * @request POST:/api/likes/products/{productId}
    * @secure
    */
-  getPopularTrends = (params: RequestParams = {}) =>
-    this.request<ApiResponseListVideoResponse, any>({
-      path: `/api/youtube/trends`,
-      method: "GET",
+  toggleLike = (productId: number, params: RequestParams = {}) =>
+    this.request<ApiResponseVoid, any>({
+      path: `/api/likes/products/${productId}`,
+      method: "POST",
       secure: true,
       ...params,
     });

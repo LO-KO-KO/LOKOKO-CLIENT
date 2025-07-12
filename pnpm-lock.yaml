@@ -92,6 +92,9 @@ importers:
       '@types/react-dom':
         specifier: 19.1.1
         version: 19.1.1(@types/react@19.1.0)
+      '@types/swiper':
+        specifier: ^6.0.0
+        version: 6.0.0
       eslint:
         specifier: ^9.29.0
         version: 9.29.0(jiti@2.4.2)
@@ -107,12 +110,12 @@ importers:
       '@radix-ui/react-select':
         specifier: ^2.2.5
         version: 2.2.5(@types/react-dom@19.1.1(@types/react@19.1.0))(@types/react@19.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      '@radix-ui/react-toggle':
-        specifier: ^1.1.9
-        version: 1.1.9(@types/react-dom@19.1.1(@types/react@19.1.0))(@types/react@19.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@radix-ui/react-slot':
         specifier: ^1.2.3
         version: 1.2.3(@types/react@19.1.0)(react@19.1.0)
+      '@radix-ui/react-toggle':
+        specifier: ^1.1.9
+        version: 1.1.9(@types/react-dom@19.1.1(@types/react@19.1.0))(@types/react@19.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@storybook/addon-essentials':
         specifier: 9.0.0-alpha.12
         version: 9.0.0-alpha.12(storybook@9.0.14(@testing-library/dom@10.4.0)(prettier@3.6.0))
@@ -2691,6 +2694,13 @@ packages:
         integrity: sha512-T92Xav+Gf/Ik1uPW581nA+JftmjWPgskw/WBf4TJzxRG/SJ+DfNnNE+WuZ4mrXuzflQMqMkm1LSYjzYW7MB1Cg==,
       }
 
+  '@types/swiper@6.0.0':
+    resolution:
+      {
+        integrity: sha512-QPZRgxZ+ivXXtzV43B3LxpXUIC7FE/EoKM+rtxngmgt2M7eeUYypZhyqZD8UxJtlBcUDw/ATGoVeSNpvBBrz2w==,
+      }
+    deprecated: This is a stub types definition. swiper provides its own type definitions, so you do not need this installed.
+
   '@types/through@0.0.33':
     resolution:
       {
@@ -3957,7 +3967,10 @@ packages:
     engines: { node: '>= 0.4' }
 
   es-toolkit@1.39.6:
-    resolution: {integrity: sha512-uiVjnLem6kkfXumlwUEWEKnwUN5QbSEB0DHy2rNJt0nkYcob5K0TXJ7oJRzhAcvx+SRmz4TahKyN5V9cly/IPA==}
+    resolution:
+      {
+        integrity: sha512-uiVjnLem6kkfXumlwUEWEKnwUN5QbSEB0DHy2rNJt0nkYcob5K0TXJ7oJRzhAcvx+SRmz4TahKyN5V9cly/IPA==,
+      }
 
   es6-promise@3.3.1:
     resolution:
@@ -4708,8 +4721,11 @@ packages:
     engines: { node: '>=12.0.0' }
 
   install@0.13.0:
-    resolution: {integrity: sha512-zDml/jzr2PKU9I8J/xyZBQn8rPCAY//UOYNmR01XwNwyfhEWObo2SWfSl1+0tm1u6PhxLwDnfsT/6jB7OUxqFA==}
-    engines: {node: '>= 0.10'}
+    resolution:
+      {
+        integrity: sha512-zDml/jzr2PKU9I8J/xyZBQn8rPCAY//UOYNmR01XwNwyfhEWObo2SWfSl1+0tm1u6PhxLwDnfsT/6jB7OUxqFA==,
+      }
+    engines: { node: '>= 0.10' }
 
   internal-slot@1.1.0:
     resolution:
@@ -6205,6 +6221,14 @@ packages:
     peerDependencies:
       react: ^19.1.0
 
+  react-icons@5.5.0:
+    resolution:
+      {
+        integrity: sha512-MEFcXdkP3dLo8uumGI5xN3lDFNsRtrjbOEKDLD7yv76v4wpnEq2Lt2qeHaQOr34I/wPN3s3+N08WkQ+CW37Xiw==,
+      }
+    peerDependencies:
+      react: '*'
+
   react-is@16.13.1:
     resolution:
       {
@@ -6922,8 +6946,11 @@ packages:
       }
 
   swiper@11.2.10:
-    resolution: {integrity: sha512-RMeVUUjTQH+6N3ckimK93oxz6Sn5la4aDlgPzB+rBrG/smPdCTicXyhxa+woIpopz+jewEloiEE3lKo1h9w2YQ==}
-    engines: {node: '>= 4.7.0'}
+    resolution:
+      {
+        integrity: sha512-RMeVUUjTQH+6N3ckimK93oxz6Sn5la4aDlgPzB+rBrG/smPdCTicXyhxa+woIpopz+jewEloiEE3lKo1h9w2YQ==,
+      }
+    engines: { node: '>= 4.7.0' }
 
   tailwind-merge@3.3.1:
     resolution:
@@ -9068,6 +9095,10 @@ snapshots:
   '@types/resolve@1.20.6': {}
 
   '@types/swagger-schema-official@2.0.25': {}
+
+  '@types/swiper@6.0.0':
+    dependencies:
+      swiper: 11.2.10
 
   '@types/through@0.0.33':
     dependencies:
@@ -11319,6 +11350,10 @@ snapshots:
     dependencies:
       react: 19.1.0
       scheduler: 0.26.0
+
+  react-icons@5.5.0(react@19.1.0):
+    dependencies:
+      react: 19.1.0
 
   react-is@16.13.1: {}
 
