@@ -1,3 +1,7 @@
+export interface ProductOption {
+  id: number;
+  optionName: string;
+}
 export interface ProductItem {
   ranking?: number;
   brandName: string;
@@ -8,4 +12,5 @@ export interface ProductItem {
   rating: number;
   reviewCount: number;
   imageUrl?: string;
+  productOptions?: ProductOption[];
 }

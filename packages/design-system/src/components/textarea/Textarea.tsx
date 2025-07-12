@@ -28,7 +28,7 @@ function Textarea({
       <textarea
         id={textareaId}
         className={cn(
-          'h-full w-full resize-none border-none text-gray-800 outline-none placeholder:text-gray-500',
+          'scrollbar-hide w-full resize-none border-none text-gray-800 outline-none placeholder:text-gray-500',
           className
         )}
         aria-label={ariaLabel}
