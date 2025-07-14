@@ -4,7 +4,7 @@ import { SEARCH_OPTION } from 'constants/option';
 import { CategoryNameEng, CategoryOptionEng } from 'types/category';
 import { SearchOption } from 'types/option';
 import { isValidCategoryKey, isValidCategoryOption } from 'utils/category';
-import { useMemo, useEffect, useState } from 'react';
+import { Suspense, useMemo, useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import {
   useProductSearch,
@@ -20,6 +20,14 @@ import SearchProductsSection from './components/search-products-section';
 import SearchReviewSection from './components/search-reviews-section';
 
 export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PageContent />
+    </Suspense>
+  );
+}
+
+function PageContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [isClient, setIsClient] = useState(false);
