@@ -4,7 +4,7 @@ import { SEARCH_OPTION } from 'constants/option';
 import { CategoryNameEng, CategoryOptionEng } from 'types/category';
 import { SearchOption } from 'types/option';
 import { isValidCategoryKey, isValidCategoryOption } from 'utils/category';
-import { Suspense, useMemo, useEffect, useState } from 'react';
+import { useMemo, useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import {
   useProductSearch,
@@ -20,14 +20,6 @@ import SearchProductsSection from './components/search-products-section';
 import SearchReviewSection from './components/search-reviews-section';
 
 export default function Page() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <PageContent />
-    </Suspense>
-  );
-}
-
-function PageContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [isClient, setIsClient] = useState(false);
@@ -47,28 +39,40 @@ function PageContent() {
     middleCategory && isValidCategoryOption(rawSub, middleCategory)
       ? rawSub
       : '';
-
   const keyword = searchParams.get('keyword') || '';
-
   const selectedTab: SearchOption = useMemo(() => {
     if (rawSearchType === 'REVIEW') return SEARCH_OPTION.REVIEW;
     return SEARCH_OPTION.PRODUCT;
   }, [rawSearchType]);
 
   // 검색바로 검색한 경우
-  const productSearchQuery = useProductSearch(
+  const {
+    data: productSearchData,
+    isLoading: isProductSearchLoading,
+    isError: isProductSearchError,
+  } = useProductSearch(
     keyword,
     0,
     8,
     !!keyword && selectedTab === SEARCH_OPTION.PRODUCT
   );
-  const reviewVideoSearchQuery = useReviewVideoSearch(
+
+  const {
+    data: reviewVideoSearchData,
+    isLoading: isReviewVideoSearchLoading,
+    isError: isReviewVideoSearchError,
+  } = useReviewVideoSearch(
     keyword,
     0,
     8,
     !!keyword && selectedTab === SEARCH_OPTION.REVIEW
   );
-  const reviewImageSearchQuery = useReviewImageSearch(
+
+  const {
+    data: reviewImageSearchData,
+    isLoading: isReviewImageSearchLoading,
+    isError: isReviewImageSearchError,
+  } = useReviewImageSearch(
     keyword,
     0,
     8,
@@ -76,21 +80,35 @@ function PageContent() {
   );
 
   // 카테고리로 검색한 경우
-  const categoryProductQuery = useCategoryProductSearch(
+  const {
+    data: categoryProductData,
+    isLoading: isCategoryProductLoading,
+    isError: isCategoryProductError,
+  } = useCategoryProductSearch(
     middleCategory,
     subCategory,
     0,
     8,
     !!middleCategory && selectedTab === SEARCH_OPTION.PRODUCT
   );
-  const categoryReviewVideoQuery = useCategoryReviewVideoSearch(
+
+  const {
+    data: categoryReviewVideoData,
+    isLoading: isCategoryReviewVideoLoading,
+    isError: isCategoryReviewVideoError,
+  } = useCategoryReviewVideoSearch(
     middleCategory,
     subCategory,
     0,
     8,
     !!middleCategory && selectedTab === SEARCH_OPTION.REVIEW
   );
-  const categoryReviewImageQuery = useCategoryReviewImageSearch(
+
+  const {
+    data: categoryReviewImageData,
+    isLoading: isCategoryReviewImageLoading,
+    isError: isCategoryReviewImageError,
+  } = useCategoryReviewImageSearch(
     middleCategory,
     subCategory,
     0,
@@ -99,24 +117,34 @@ function PageContent() {
   );
 
   const productData = keyword
-    ? productSearchQuery.data?.data
-    : categoryProductQuery.data?.data;
+    ? productSearchData?.data
+    : categoryProductData?.data;
   const reviewVideoData = keyword
-    ? reviewVideoSearchQuery.data?.data
-    : categoryReviewVideoQuery.data?.data;
+    ? reviewVideoSearchData?.data
+    : categoryReviewVideoData?.data;
   const reviewImageData = keyword
-    ? reviewImageSearchQuery.data?.data
-    : categoryReviewImageQuery.data?.data;
+    ? reviewImageSearchData?.data
+    : categoryReviewImageData?.data;
 
   const isLoading =
     (keyword &&
-      (productSearchQuery.isLoading ||
-        reviewVideoSearchQuery.isLoading ||
-        reviewImageSearchQuery.isLoading)) ||
+      (isProductSearchLoading ||
+        isReviewVideoSearchLoading ||
+        isReviewImageSearchLoading)) ||
     (!keyword &&
-      (categoryProductQuery.isLoading ||
-        categoryReviewVideoQuery.isLoading ||
-        categoryReviewImageQuery.isLoading));
+      (isCategoryProductLoading ||
+        isCategoryReviewVideoLoading ||
+        isCategoryReviewImageLoading));
+
+  const hasError =
+    (keyword &&
+      (isProductSearchError ||
+        isReviewVideoSearchError ||
+        isReviewImageSearchError)) ||
+    (!keyword &&
+      (isCategoryProductError ||
+        isCategoryReviewVideoError ||
+        isCategoryReviewImageError));
 
   const handleClickTab = (option: SearchOption) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -130,9 +158,6 @@ function PageContent() {
     router.push(`/search?${params.toString()}`);
   };
 
-  const handleVideoButton = () => {};
-  const handleImageButton = () => {};
-
   const tabRender = {
     [SEARCH_OPTION.PRODUCT]: (
       <SearchProductsSection products={(productData as any)?.products || []} />
@@ -141,8 +166,6 @@ function PageContent() {
       <SearchReviewSection
         reviewsVideo={(reviewVideoData as any)?.reviews || []}
         reviewsImage={(reviewImageData as any)?.reviews || []}
-        handleVideoButton={handleVideoButton}
-        handleImageButton={handleImageButton}
       />
     ),
   }[selectedTab];
@@ -153,6 +176,10 @@ function PageContent() {
 
   if (isLoading) {
     return <div>데이터를 불러오는 중...</div>;
+  }
+
+  if (hasError) {
+    return <div>데이터를 불러오는 중 오류가 발생했습니다.</div>;
   }
 
   return (

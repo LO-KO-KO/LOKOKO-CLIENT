@@ -21,7 +21,7 @@ export class Youtube<
    *
    * @tags YOUTUBE
    * @name GetPopularTrends
-   * @summary 인기 뷰티 트렌드 영상 조회
+   * @summary 인기 뷰티 트렌드 영상 조회 (메인 페이지)
    * @request GET:/api/youtube/trends
    * @secure
    */

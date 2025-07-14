@@ -9,16 +9,16 @@
  * ## SOURCE: https://github.com/acacode/swagger-typescript-api ##
  * ---------------------------------------------------------------
  */
+
 import {
   ApiResponseCategoryNewProductResponse,
   ApiResponseCategoryPopularProductResponse,
-  ApiResponseNameBrandProductResponse,
   ApiResponseObject,
   ApiResponseProductDetailResponse,
   ApiResponseProductDetailYoutubeResponse,
   ApiResponseString,
-} from './data-contracts';
-import { HttpClient, RequestParams } from './http-client';
+} from "./data-contracts";
+import { HttpClient, RequestParams } from "./http-client";
 
 export class Product<
   SecurityDataType = unknown,
@@ -35,7 +35,7 @@ export class Product<
   updateSearchFields = (params: RequestParams = {}) =>
     this.request<ApiResponseString, any>({
       path: `/api/products/search-fields/migrate`,
-      method: 'POST',
+      method: "POST",
       secure: true,
       ...params,
     });
@@ -44,7 +44,7 @@ export class Product<
    *
    * @tags PRODUCT
    * @name Search
-   * @summary 상품명 또는 브랜드명 상품 검색
+   * @summary 상품명 또는 브랜드명 상품 및 리뷰 검색
    * @request GET:/api/products/search
    * @secure
    */
@@ -52,8 +52,8 @@ export class Product<
     query: {
       keyword: string;
       /** @default "false" */
-      searchType?: 'PRODUCT' | 'REVIEW';
-      mediaType?: 'IMAGE' | 'VIDEO';
+      searchType?: "PRODUCT" | "REVIEW";
+      mediaType?: "IMAGE" | "VIDEO";
       /**
        * @format int32
        * @default 0
@@ -65,11 +65,11 @@ export class Product<
        */
       size?: number;
     },
-    params: RequestParams = {}
+    params: RequestParams = {},
   ) =>
-    this.request<ApiResponseNameBrandProductResponse, any>({
+    this.request<ApiResponseObject, any>({
       path: `/api/products/search`,
-      method: 'GET',
+      method: "GET",
       query: query,
       secure: true,
       ...params,
@@ -79,14 +79,14 @@ export class Product<
    *
    * @tags PRODUCT
    * @name GetProductDetail
-   * @summary 상세조회 제품(별점 포함) 조회
+   * @summary 상세조회 제품(별점 포함) 조회 (상세 조회)
    * @request GET:/api/products/details/{productId}
    * @secure
    */
   getProductDetail = (productId: number, params: RequestParams = {}) =>
     this.request<ApiResponseProductDetailResponse, any>({
       path: `/api/products/details/${productId}`,
-      method: 'GET',
+      method: "GET",
       secure: true,
       ...params,
     });
@@ -95,14 +95,14 @@ export class Product<
    *
    * @tags PRODUCT
    * @name GetProductDetailYoutube
-   * @summary 상세조회 유튜브 리뷰 조회
+   * @summary 상세조회 유튜브 리뷰 조회 (상세 조회)
    * @request GET:/api/products/details/{productId}/youtube
    * @secure
    */
   getProductDetailYoutube = (productId: number, params: RequestParams = {}) =>
     this.request<ApiResponseProductDetailYoutubeResponse, any>({
       path: `/api/products/details/${productId}/youtube`,
-      method: 'GET',
+      method: "GET",
       secure: true,
       ...params,
     });
@@ -118,27 +118,27 @@ export class Product<
   searchProductsByCategory = (
     query: {
       middleCategory:
-        | 'FACIAL_CARE'
-        | 'FACE_MAKEUP'
-        | 'EYE_MAKEUP'
-        | 'LIP_MAKEUP';
+        | "FACIAL_CARE"
+        | "FACE_MAKEUP"
+        | "EYE_MAKEUP"
+        | "LIP_MAKEUP";
       subCategory?:
-        | 'TONER'
-        | 'MOISTURIZER'
-        | 'ESSENCE_SERUM'
-        | 'CREAM'
-        | 'FOUNDATION'
-        | 'POWDER_COMPACT'
-        | 'CONCEALER'
-        | 'BLUSHER'
-        | 'EYEBROW'
-        | 'EYESHADOW'
-        | 'EYELINER'
-        | 'LIPSTICK'
-        | 'LIP_TINT';
+        | "TONER"
+        | "MOISTURIZER"
+        | "ESSENCE_SERUM"
+        | "CREAM"
+        | "FOUNDATION"
+        | "POWDER_COMPACT"
+        | "CONCEALER"
+        | "BLUSHER"
+        | "EYEBROW"
+        | "EYESHADOW"
+        | "EYELINER"
+        | "LIPSTICK"
+        | "LIP_TINT";
       /** @default "false" */
-      searchType?: 'PRODUCT' | 'REVIEW';
-      mediaType?: 'IMAGE' | 'VIDEO';
+      searchType?: "PRODUCT" | "REVIEW";
+      mediaType?: "IMAGE" | "VIDEO";
       /**
        * @format int32
        * @default 0
@@ -150,11 +150,11 @@ export class Product<
        */
       size?: number;
     },
-    params: RequestParams = {}
+    params: RequestParams = {},
   ) =>
     this.request<ApiResponseObject, any>({
       path: `/api/products/categories/search`,
-      method: 'GET',
+      method: "GET",
       query: query,
       secure: true,
       ...params,
@@ -164,17 +164,17 @@ export class Product<
    *
    * @tags PRODUCT
    * @name SearchPopularProductsByCategory
-   * @summary 인기상품 카테고리별 조회
+   * @summary 인기상품 카테고리별 조회 (메인 페이지)
    * @request GET:/api/products/categories/popular
    * @secure
    */
   searchPopularProductsByCategory = (
     query: {
       middleCategory:
-        | 'FACIAL_CARE'
-        | 'FACE_MAKEUP'
-        | 'EYE_MAKEUP'
-        | 'LIP_MAKEUP';
+        | "FACIAL_CARE"
+        | "FACE_MAKEUP"
+        | "EYE_MAKEUP"
+        | "LIP_MAKEUP";
       /**
        * @format int32
        * @default 0
@@ -186,11 +186,11 @@ export class Product<
        */
       size?: number;
     },
-    params: RequestParams = {}
+    params: RequestParams = {},
   ) =>
     this.request<ApiResponseCategoryPopularProductResponse, any>({
       path: `/api/products/categories/popular`,
-      method: 'GET',
+      method: "GET",
       query: query,
       secure: true,
       ...params,
@@ -200,17 +200,17 @@ export class Product<
    *
    * @tags PRODUCT
    * @name SearchNewProductsByCategory
-   * @summary 신상품 카테고리별 조회
+   * @summary 신상품 카테고리별 조회 (메인 페이지)
    * @request GET:/api/products/categories/new
    * @secure
    */
   searchNewProductsByCategory = (
     query: {
       middleCategory:
-        | 'FACIAL_CARE'
-        | 'FACE_MAKEUP'
-        | 'EYE_MAKEUP'
-        | 'LIP_MAKEUP';
+        | "FACIAL_CARE"
+        | "FACE_MAKEUP"
+        | "EYE_MAKEUP"
+        | "LIP_MAKEUP";
       /**
        * @format int32
        * @default 0
@@ -222,11 +222,11 @@ export class Product<
        */
       size?: number;
     },
-    params: RequestParams = {}
+    params: RequestParams = {},
   ) =>
     this.request<ApiResponseCategoryNewProductResponse, any>({
       path: `/api/products/categories/new`,
-      method: 'GET',
+      method: "GET",
       query: query,
       secure: true,
       ...params,

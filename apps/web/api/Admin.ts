@@ -9,8 +9,9 @@
  * ## SOURCE: https://github.com/acacode/swagger-typescript-api ##
  * ---------------------------------------------------------------
  */
-import { ApiResponseVoid } from './data-contracts';
-import { HttpClient, RequestParams } from './http-client';
+
+import { ApiResponseVoid } from "./data-contracts";
+import { HttpClient, RequestParams } from "./http-client";
 
 export class Admin<
   SecurityDataType = unknown,
@@ -30,11 +31,11 @@ export class Admin<
       /** @format int64 */
       userId: number;
     },
-    params: RequestParams = {}
+    params: RequestParams = {},
   ) =>
     this.request<ApiResponseVoid, any>({
       path: `/api/admin/reviews/${reviewId}`,
-      method: 'DELETE',
+      method: "DELETE",
       query: query,
       secure: true,
       ...params,

@@ -2,20 +2,15 @@
 
 import CardReview from 'components/card/card-review';
 import { ReviewItem } from 'types/review';
-import MoreButton from './more-button';
 
 interface SearchReviewSectionProps {
   reviewsVideo: ReviewItem[];
   reviewsImage: ReviewItem[];
-  handleVideoButton: () => void;
-  handleImageButton: () => void;
 }
 
 export default function SearchReviewSection({
   reviewsVideo,
   reviewsImage,
-  handleVideoButton,
-  handleImageButton,
 }: SearchReviewSectionProps) {
   const handleCardClick = (reviewId: number) => {
     console.log(reviewId);
@@ -38,7 +33,6 @@ export default function SearchReviewSection({
             />
           ))}
         </div>
-        <MoreButton onClick={handleVideoButton} />
       </div>
 
       <div className="mx-auto flex w-[112.8rem] flex-col gap-[3.2rem] self-stretch pt-[3.2rem]">
@@ -57,7 +51,6 @@ export default function SearchReviewSection({
             />
           ))}
         </div>
-        <MoreButton onClick={handleImageButton} />
       </div>
     </section>
   );

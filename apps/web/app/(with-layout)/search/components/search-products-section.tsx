@@ -1,11 +1,15 @@
+'use client';
+
+import { ProductResponse } from 'api/data-contracts';
 import CardProduct from 'components/card/card-product';
 import { ProductItem } from 'types/product';
 
 export default function SearchProductsSection({
   products,
 }: {
-  products: ProductItem[];
+  products: ProductResponse[];
 }) {
+  console.log('SearchProductsSection 렌더링', products);
   const handleCardClick = (productId: number) => {
     console.log(`Card clicked: ${productId}`);
   };
@@ -15,14 +19,14 @@ export default function SearchProductsSection({
         {products.map((product) => (
           <CardProduct
             key={product.productId}
-            brandName={product.brandName}
-            productName={product.productName}
-            unit={product.unit}
-            productId={product.productId}
-            isLiked={product.isLiked}
-            rating={product.rating}
-            reviewCount={product.reviewCount}
-            imageUrl={product.imageUrl}
+            brandName={product.brandName || ''}
+            productName={product.productName || ''}
+            unit={product.unit || ''}
+            productId={product.productId || 0}
+            isLiked={product.isLiked || false}
+            rating={product.rating || 0}
+            reviewCount={product.reviewCount || 0}
+            imageUrl={product.imageUrls?.[0] || ''}
             handleCardClick={handleCardClick}
           />
         ))}

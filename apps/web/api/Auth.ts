@@ -9,14 +9,14 @@
  * ## SOURCE: https://github.com/acacode/swagger-typescript-api ##
  * ---------------------------------------------------------------
  */
+
 import {
   ApiResponseJwtLoginResponse,
   ApiResponseLineLoginResponse,
-  ApiResponseLoginUrlResponse,
   ApiResponseVoid,
   TestLoginRequest,
-} from './data-contracts';
-import { ContentType, HttpClient, RequestParams } from './http-client';
+} from "./data-contracts";
+import { ContentType, HttpClient, RequestParams } from "./http-client";
 
 export class Auth<
   SecurityDataType = unknown,
@@ -33,23 +33,7 @@ export class Auth<
   reissueRefreshToken = (params: RequestParams = {}) =>
     this.request<ApiResponseVoid, any>({
       path: `/api/auth/refresh`,
-      method: 'POST',
-      secure: true,
-      ...params,
-    });
-  /**
-   * No description
-   *
-   * @tags AUTH
-   * @name GetLoginUrl
-   * @summary 라인 로그인 URL 생성 (클라에서 호출)
-   * @request GET:/api/auth/url
-   * @secure
-   */
-  getLoginUrl = (params: RequestParams = {}) =>
-    this.request<ApiResponseLoginUrlResponse, any>({
-      path: `/api/auth/url`,
-      method: 'GET',
+      method: "POST",
       secure: true,
       ...params,
     });
@@ -65,7 +49,7 @@ export class Auth<
   login = (data: TestLoginRequest, params: RequestParams = {}) =>
     this.request<ApiResponseJwtLoginResponse, any>({
       path: `/api/auth/login`,
-      method: 'POST',
+      method: "POST",
       body: data,
       secure: true,
       type: ContentType.Json,
@@ -83,7 +67,7 @@ export class Auth<
   redirectToLineAuth = (params: RequestParams = {}) =>
     this.request<void, any>({
       path: `/api/auth/line/redirect`,
-      method: 'GET',
+      method: "GET",
       secure: true,
       ...params,
     });
@@ -92,7 +76,7 @@ export class Auth<
    *
    * @tags AUTH
    * @name LineLogin
-   * @summary 라인 소셜 로그인, JWT 토큰 발급
+   * @summary 라인 소셜 로그인, JWT 토큰 발급 후 저장
    * @request GET:/api/auth/line/login
    * @secure
    */
@@ -101,11 +85,11 @@ export class Auth<
       code: string;
       state: string;
     },
-    params: RequestParams = {}
+    params: RequestParams = {},
   ) =>
     this.request<ApiResponseLineLoginResponse, any>({
       path: `/api/auth/line/login`,
-      method: 'GET',
+      method: "GET",
       query: query,
       secure: true,
       ...params,
