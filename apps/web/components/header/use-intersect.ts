@@ -6,16 +6,30 @@ export const useIntersect = (
 ) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(initialVisible);
+  const lastScrollY = useRef(0);
 
   const callback = useCallback((entries: IntersectionObserverEntry[]) => {
     const [entry] = entries;
     if (!entry) return;
 
-    if (!entry.isIntersecting) {
-      setIsVisible(false);
-    } else {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY === 0) {
       setIsVisible(true);
+      return;
     }
+
+    if (!entry.isIntersecting) {
+      if (currentScrollY > lastScrollY.current) {
+        setIsVisible(false);
+      }
+    } else {
+      if (currentScrollY < lastScrollY.current) {
+        setIsVisible(true);
+      }
+    }
+
+    lastScrollY.current = currentScrollY;
   }, []);
 
   useEffect(() => {
