@@ -56,7 +56,7 @@ export const getReviewList = async (
   });
 
   if (!response.data) {
-    throw new Error('상품 상세 정보를 가져올 수 없습니다.');
+    throw new Error();
   }
 
   return response.data;
@@ -71,7 +71,7 @@ export const postReviewLike = async (
   });
 
   if (!response.data) {
-    throw new Error('좋아요 실패');
+    throw new Error();
   }
 
   return response.data;
@@ -86,7 +86,7 @@ export const deleteReview = async (
   });
 
   if (!response.data) {
-    throw new Error('상품 삭제 실패');
+    throw new Error();
   }
   return response.data;
 };
@@ -100,7 +100,7 @@ export const getUserUploadedVideoList = async (
   });
 
   if (!response.data) {
-    throw new Error('유저 업로드 비디오 목록을 가져올 수 없습니다.');
+    throw new Error();
   }
 
   return response.data;

@@ -58,7 +58,7 @@ export default function ClientPage({ userStatus }: ImageReviewClientPageProps) {
     );
   }
   if (listError || !reviewsListResponse?.data) {
-    return <div>리뷰 목록을 불러올 수 없습니다.</div>;
+    throw new Error();
   }
 
   const reviews = reviewsListResponse.data.imageReviews;
@@ -101,9 +101,7 @@ export default function ClientPage({ userStatus }: ImageReviewClientPageProps) {
     const detail = detailMap.get(review.reviewId);
 
     if (!detail) {
-      throw new Error(
-        `리뷰 ${review.reviewId}의 상세 정보를 찾을 수 없습니다.`
-      );
+      throw new Error();
     }
 
     return {

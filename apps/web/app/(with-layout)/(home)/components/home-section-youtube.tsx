@@ -42,6 +42,6 @@ export default async function HomeSectionYouTube() {
       </div>
     );
   } catch {
-    return <div>영상 불러오는 중 오류 발생</div>;
+    throw new Error();
   }
 }

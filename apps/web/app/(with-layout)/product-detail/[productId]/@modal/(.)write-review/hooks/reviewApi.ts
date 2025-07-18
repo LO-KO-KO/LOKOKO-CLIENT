@@ -28,8 +28,8 @@ export const usePostReview = (onSuccess?: () => void) => {
       });
     },
 
-    onError: (error) => {
-      console.error('리뷰 작성 실패:', error);
+    onError: () => {
+      throw new Error();
     },
   });
 };

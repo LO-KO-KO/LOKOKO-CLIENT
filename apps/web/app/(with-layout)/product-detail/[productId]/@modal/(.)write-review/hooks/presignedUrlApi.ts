@@ -50,7 +50,7 @@ export const uploadFiles = async (
         );
       }
     } catch (error) {
-      console.error(`${fileType} 파일 ${index + 1} 업로드 에러:`, error);
+      throw new Error();
     }
   });
 

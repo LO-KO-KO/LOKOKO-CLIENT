@@ -51,8 +51,6 @@ export const useReviewVideoSearch = (
       }),
     enabled: enabled && !!keyword.trim(),
     staleTime: 5 * 60 * 1000,
-    retry: 1,
-    retryDelay: 1000,
   });
 };
 
@@ -79,8 +77,6 @@ export const useReviewImageSearch = (
       }),
     enabled: enabled && !!keyword.trim(),
     staleTime: 5 * 60 * 1000,
-    retry: 1,
-    retryDelay: 1000,
   });
 };
 
@@ -108,8 +104,6 @@ export const useCategoryProductSearch = (
       }),
     enabled: enabled && !!middleCategory,
     staleTime: 5 * 60 * 1000,
-    retry: 1,
-    retryDelay: 1000,
   });
 };
 
@@ -138,8 +132,6 @@ export const useCategoryReviewVideoSearch = (
       }),
     enabled: enabled && !!middleCategory,
     staleTime: 5 * 60 * 1000,
-    retry: 1,
-    retryDelay: 1000,
   });
 };
 
@@ -168,7 +160,5 @@ export const useCategoryReviewImageSearch = (
       }),
     enabled: enabled && !!middleCategory,
     staleTime: 5 * 60 * 1000,
-    retry: 1,
-    retryDelay: 1000,
   });
 };

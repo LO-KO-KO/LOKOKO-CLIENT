@@ -58,7 +58,7 @@ export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
     );
   }
   if (listError || !reviewsListResponse?.data) {
-    return <div>리뷰 목록을 불러올 수 없습니다.</div>;
+    throw new Error();
   }
 
   const reviews = reviewsListResponse.data.videoReviews;
@@ -68,7 +68,7 @@ export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
     (review) => review.reviewId === currentReviewId
   );
   if (currentIndex === -1) {
-    return <div>리뷰를 찾을 수 없습니다.</div>;
+    throw new Error();
   }
 
   // 모든 상세 정보가 로딩 완료될 때까지 대기
@@ -101,9 +101,7 @@ export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
     const detail = detailMap.get(review.reviewId);
 
     if (!detail) {
-      throw new Error(
-        `리뷰 ${review.reviewId}의 상세 정보를 찾을 수 없습니다.`
-      );
+      throw new Error();
     }
 
     return {
