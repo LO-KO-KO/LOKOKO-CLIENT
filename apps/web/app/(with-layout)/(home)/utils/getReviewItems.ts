@@ -13,7 +13,7 @@ export const getVideoReviews = async () => {
       });
     return reviewVideoResponse;
   } catch {
-    return null;
+    throw new Error();
   }
 };
 export const getImageReviews = async () => {
@@ -24,7 +24,7 @@ export const getImageReviews = async () => {
       });
     return reviewImageResponse;
   } catch {
-    return null;
+    throw new Error();
   }
 };
 

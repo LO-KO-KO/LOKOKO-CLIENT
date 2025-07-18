@@ -70,20 +70,12 @@ export const apiRequest = async <T = unknown>({
     }
 
     if (!response.ok) {
-      const error = await response.text();
-      console.error('API Response Error:', {
-        status: response.status,
-        statusText: response.statusText,
-        url: requestUrl,
-        error: error,
-      });
-      throw error;
+      throw new Error();
     }
     const responseData = await response.json();
     return responseData;
   } catch (error) {
-    console.error(error);
-    throw error;
+    throw new Error();
   }
 };
 

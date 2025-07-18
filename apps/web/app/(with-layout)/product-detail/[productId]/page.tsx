@@ -20,7 +20,7 @@ export default async function Page({
     youtubeListData = youtubeListResponse;
   } catch {
     // TODO: 에러 핸들링 로직 추가
-    notFound();
+    throw new Error();
   }
 
   if (!productDetailData) {

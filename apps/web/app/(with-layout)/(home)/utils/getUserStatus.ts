@@ -5,6 +5,6 @@ export async function getUserStatus() {
   if (isUserAccessToken) {
     return true;
   } else {
-    return false;
+    throw new Error();
   }
 }

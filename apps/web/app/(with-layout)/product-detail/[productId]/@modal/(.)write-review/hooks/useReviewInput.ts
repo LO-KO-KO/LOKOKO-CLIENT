@@ -137,7 +137,7 @@ export const useReviewInput = (productId?: number, onSuccess?: () => void) => {
         });
       }
     } catch (error) {
-      console.error('리뷰 작성 실패:', error);
+      throw new Error();
     }
   };
 
