@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { REVIEW_TEXT, REVIEW_TEXT_ERROR_MESSAGE } from 'constants/review';
-import { ReviewRequest } from 'typescript-swagger-codegen/data-contracts';
+import { ReviewRequest } from 'swagger-codegen/data-contracts';
 import { z } from 'zod';
 
 import {

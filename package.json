@@ -7,9 +7,9 @@
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
-    "generate:api:web": "dotenv -e .env -- sh -lc 'curl -s \"$SWAGGERI_URL\" | sed \"s/\\\"openapi\\\":\\\"3\\.1\\.0\\\"/\\\"openapi\\\":\\\"3.0.1\\\"/\" | npx prettier --parser json > ./tmp-spec.json &&  swagger-typescript-api generate -p ./tmp-spec.json -o ./apps/web/typescript-swagger-codegen --modular --clean-output --module-name-first-tag && rm ./tmp-spec.json'",
+    "generate:api:web": "dotenv -e .env -- sh -lc 'curl -s \"$SWAGGERI_URL\" | sed \"s/\\\"openapi\\\":\\\"3\\.1\\.0\\\"/\\\"openapi\\\":\\\"3.0.1\\\"/\" | npx prettier --parser json > ./tmp-spec.json &&  swagger-typescript-api generate -p ./tmp-spec.json -o ./apps/web/swagger-codegen --modular --clean-output --module-name-first-tag && rm ./tmp-spec.json'",
     "generate:type-spec": "dotenv -e .env -- sh -lc 'curl -s \"$SWAGGERI_URL\" | sed \"s/\\\"openapi\\\":\\\"3\\.1\\.0\\\"/\\\"openapi\\\":\\\"3.0.1\\\"/\" > ./tmp-spec.json'",
-    "generate:swagger-api": "swagger-typescript-api generate -p ./tmp-spec.json -o ./apps/web/typescript-swagger-codegen --modular --clean-output --module-name-first-tag && rm ./tmp-spec.json",
+    "generate:swagger-api": "swagger-typescript-api generate -p ./tmp-spec.json -o ./apps/web/swagger-codegen --modular --clean-output --module-name-first-tag && rm ./tmp-spec.json",
     "generate:api:web:all": "pnpm generate:type-spec && pnpm generate:swagger-api"
   },
   "devDependencies": {

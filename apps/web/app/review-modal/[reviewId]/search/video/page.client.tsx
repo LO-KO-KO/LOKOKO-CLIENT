@@ -17,7 +17,7 @@ import { REVIEW_KEYS } from 'constants/query-key';
 import type {
   ApiResponseVideoReviewDetailResponse,
   VideoReviewDetailResponse,
-} from 'typescript-swagger-codegen/data-contracts';
+} from 'swagger-codegen/data-contracts';
 
 import {
   CategoryNameEng,

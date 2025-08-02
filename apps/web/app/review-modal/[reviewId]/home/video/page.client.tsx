@@ -15,7 +15,7 @@ import LoadingSvg from 'components/loading/loading-svg';
 import {
   ApiResponseVideoReviewDetailResponse,
   VideoReviewDetailResponse,
-} from 'typescript-swagger-codegen/data-contracts';
+} from 'swagger-codegen/data-contracts';
 
 const formatDateToJapanese = (dateString: string): string => {
   const date = new Date(dateString);

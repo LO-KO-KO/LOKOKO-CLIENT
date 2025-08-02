@@ -8,7 +8,7 @@ import {
   MainImageReviewResponse,
   MainVideoReview,
   MainVideoReviewResponse,
-} from 'typescript-swagger-codegen/data-contracts';
+} from 'swagger-codegen/data-contracts';
 
 import { Button } from '@lococo/design-system/button';
 import { SvgArrowOutward } from '@lococo/icons';

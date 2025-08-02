@@ -11,7 +11,7 @@
     "paths": {
       "@lococo/icons": ["../../packages/design-system/src/icons"],
       "@lococo/utils": ["../../packages/design-system/src/lib/utils"],
-      "@typescript-swagger/*": ["typescript-swagger-codegen/*"]
+      "@typescript-swagger/*": ["swagger-codegen/*"]
     }
   },
   "include": [

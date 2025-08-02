@@ -12,7 +12,7 @@ import {
   ApiResponseMainImageReviewResponse,
   ApiResponseMainVideoReviewResponse,
   ApiResponseVideoReviewDetailResponse,
-} from 'typescript-swagger-codegen/data-contracts';
+} from 'swagger-codegen/data-contracts';
 
 import { REVIEW_KEYS } from '../../../constants/query-key';
 

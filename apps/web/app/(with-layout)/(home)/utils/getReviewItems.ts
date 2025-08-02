@@ -3,7 +3,7 @@ import {
   ApiResponseMainImageReviewResponse,
   ApiResponseMainVideoReviewResponse,
   MainImageReviewResponse,
-} from 'typescript-swagger-codegen/data-contracts';
+} from 'swagger-codegen/data-contracts';
 
 export const getVideoReviews = async () => {
   try {

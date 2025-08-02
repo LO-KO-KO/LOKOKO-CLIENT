@@ -11,7 +11,7 @@ import LoadingSvg from 'components/loading/loading-svg';
 import type {
   ApiResponseImageReviewDetailResponse,
   ImageReviewDetailResponse,
-} from 'typescript-swagger-codegen/data-contracts';
+} from 'swagger-codegen/data-contracts';
 
 import { REVIEW_KEYS } from '../../../../../constants/query-key';
 import {

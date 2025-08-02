@@ -9,8 +9,8 @@ import { apiRequest } from 'app/api/apiRequest';
 import CardProduct from 'components/card/card-product';
 import { CardSkeleton } from 'components/card/card-skeleton';
 import { CATEGORY_NAME } from 'constants/category';
+import { ApiResponseNewProductsByCategoryResponse } from 'swagger-codegen/data-contracts';
 import { CategoryNameEng } from 'types/category';
-import { ApiResponseNewProductsByCategoryResponse } from 'typescript-swagger-codegen/data-contracts';
 
 import { Tab, TabContainer } from '@lococo/design-system/tab';
 

@@ -11,7 +11,7 @@ import LoadingSvg from 'components/loading/loading-svg';
 import type {
   ApiResponseVideoReviewDetailResponse,
   VideoReviewDetailResponse,
-} from 'typescript-swagger-codegen/data-contracts';
+} from 'swagger-codegen/data-contracts';
 
 import ReviewModalSwiper from '../../../components/review-modal-swiper';
 import { useAllVideoReviewDetails } from '../../../hooks/review-api';
